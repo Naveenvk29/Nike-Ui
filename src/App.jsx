@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+import Hero from "./components/Hero";
+import Highlight from "./components/Highlight";
+import PopularSale from "./components/PopularSale";
+import Story from "./components/Story";
+import TopRated from "./components/TopRated";
+import Cart from "./components/Cart";
+import Wishlist from "./components/Wishlist";
+// import {
+//   footerAPI,
+//   heroapi,
+//   highlight,
+//   popularsales,
+//   sneaker,
+//   story,
+//   topratesales,
+// } from "./data/data";
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="bg-gray-200">
+      <Nav />
 
-export default App
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />,
+              <PopularSale />,
+              <Highlight />,
+              <TopRated />,
+              <Highlight />,
+              <Story />,
+              <Footer />,
+            </>
+          }
+        />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </div>
+  );
+};
+
+export default App;
